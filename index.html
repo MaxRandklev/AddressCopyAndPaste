@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Address</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    .container {
+      background: white;
+      padding: 30px 50px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 400px;
+    }
+    .address {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #333;
+      user-select: all;
+      word-break: break-word;
+    }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #5a67d8;
+    }
+    button:active {
+      background: #4c51bf;
+    }
+    .success {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="address" class="address">
+      570 Washington St SW, Room 0439<br>
+      Blacksburg, VA 24061
+    </div>
+    <button onclick="copyAddress()">Copy Address</button>
+    <div id="success" class="success">Copied!</div>
+  </div>
+
+  <script>
+    function copyAddress() {
+      const text = document.getElementById("address").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const successMsg = document.getElementById("success");
+        successMsg.style.display = "block";
+        setTimeout(() => successMsg.style.display = "none", 2000);
+      });
+    }
+  </script>
+</body>
+</html>
